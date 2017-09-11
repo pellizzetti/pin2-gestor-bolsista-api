@@ -22,4 +22,13 @@ class UserController
     {
         echo $this->user->getMyUser();
     }
+
+    public function testPost()
+    {
+        $request = \Flight::request();
+        $data = json_decode($request->getBody());
+
+        echo "E-mail: $data->email
+            Senha: $data->password";
+    }
 }
