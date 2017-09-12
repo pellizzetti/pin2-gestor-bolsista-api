@@ -23,12 +23,21 @@ class UserController
         echo $this->user->getMyUser();
     }
 
-    public function testPost()
+    public function loginByUserAndPassword()
     {
         $request = \Flight::request();
-        $data = json_decode($request->getBody());
+        $data    = json_decode($request->getBody());
 
-        echo "E-mail: $data->email
-            Senha: $data->password";
+        if (property_exists($data, 'email') && property_exists($data, 'password')) {
+            $userEmail = $data->email;
+            $userPass  = $data->password;
+
+            \Flight::json('Autenticado! :D');
+        }
+
+        \Flight::json(
+            'Servidor não pode entender a requisição por se tratar de um sintaxe inválida para essa rota',
+            $code = 400
+        );
     }
 }

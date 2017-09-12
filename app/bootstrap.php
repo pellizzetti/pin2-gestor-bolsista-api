@@ -4,13 +4,13 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Define diretórios
+// Define raiz da aplicação
 define('ROOT_DIR', dirname(dirname(__FILE__)));
-define('VENDOR_DIR', ROOT_DIR . '/vendor');
 
-// Inclui autoload e as routas
-require(VENDOR_DIR . '/autoload.php');
+// Inclui autoload, rotas e config do bd
+require(ROOT_DIR . '/vendor/autoload.php');
 require(ROOT_DIR . '/app/routes.php');
+require(ROOT_DIR . '/app/config/database.php');
 
 class Bootstrap
 {
