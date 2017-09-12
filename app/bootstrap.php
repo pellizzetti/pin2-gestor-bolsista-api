@@ -7,10 +7,10 @@ error_reporting(E_ALL);
 // Define raiz da aplicação
 define('ROOT_DIR', dirname(dirname(__FILE__)));
 
-// Inclui autoload, rotas e config do bd
+// Inclui autoload, config do bd e rotas
 require(ROOT_DIR . '/vendor/autoload.php');
-require(ROOT_DIR . '/app/routes.php');
 require(ROOT_DIR . '/app/config/database.php');
+require(ROOT_DIR . '/app/routes.php');
 
 class Bootstrap
 {

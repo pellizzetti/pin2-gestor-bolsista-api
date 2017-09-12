@@ -2,25 +2,27 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
-
 class UserController
 {
     private $user;
 
-    public function __construct()
+    public function __construct($spot)
     {
-        $this->user = new User;
+        $this->user = $spot->mapper('App\Models\User');
     }
 
-    public function getUserId($id)
+    public function createAdmin()
     {
-        echo $id;
-    }
+        try {
+            $entity = $this->user->create([
+                'email' => 'admin@admin.com',
+                'password' => 'admin'
+            ]);
 
-    public function testModel()
-    {
-        echo $this->user->getMyUser();
+            \Flight::json($entity);
+        } catch (Exception $e) {
+            echo 'Erro: ',  $e->getMessage(), "\n";
+        }
     }
 
     public function loginByUserAndPassword()

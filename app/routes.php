@@ -11,9 +11,10 @@ Flight::route('/', function () {
     echo 'api';
 });
 
-$UserController = new UserController();
+$UserController = new UserController($spot);
 
 Flight::route('/user/@id:[0-9]{5}', array($UserController, 'getUserId'));
 Flight::route('GET /user/test', array($UserController, 'testModel'));
+Flight::route('GET /user/create/admin', array($UserController, 'createAdmin'));
 
 Flight::route('POST /login', array($UserController, 'loginByUserAndPassword'));
