@@ -2,27 +2,26 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+use Spot\Locator;
 
-class UserController
+class UserController extends Controller
 {
-    private $user;
-
-    public function __construct()
+    public function __construct(Locator $spot)
     {
-        //$this->user = $spot->mapper('App\Models\User');
-        $this->user = Config\config\container()->get('User');
+        parent::__construct($spot);
+        $this->entity = 'App\Models\User';
     }
 
     public function createAdmin()
     {
         try {
-            $entity = $this->user->create([
+            $mapper = $this->spot->mapper($this->entity);
+            $user = $mapper->create([
                 'email'    => 'admin@admin.com',
                 'password' => password_hash('admin', PASSWORD_DEFAULT)
             ]);
 
-            \Flight::json($entity);
+            \Flight::json($user);
         } catch (Exception $e) {
             echo 'Erro: ',  $e->getMessage(), "\n";
         }
@@ -36,8 +35,29 @@ class UserController
         if (property_exists($data, 'email') && property_exists($data, 'password')) {
             $userEmail     = $data->email;
             $userPassword  = $data->password;
-            
-            \Flight::json($this->user->loginByUserAndPassword($userEmail, $userPassword));;
+
+            $mapper = $this->spot->mapper($this->entity);
+            $user = $mapper->first(['email' => $userEmail]);
+
+            if ($user) {
+                $hashPassword = isset($user->password) ? $user->password : '';
+                if (password_verify($userPassword, $hashPassword)) {
+                    \Flight::json(
+                        array(
+                            'auth' => true,
+                            'msg' => 'Autenticado com sucesso'
+                        )
+                    );
+                }
+            }
+
+            \Flight::json(
+                array(
+                    'auth' => false,
+                    'msg' => 'E-mail ou senha inválidos'
+                ),
+                $code = 401
+            );
         }
 
         \Flight::json(
