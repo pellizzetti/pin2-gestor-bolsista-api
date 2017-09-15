@@ -1,16 +1,32 @@
 <?php
 
-$cfg = new \Spot\Config();
+namespace App\Config;
 
-$cfg->addConnection('pgsql', [
-    'dbname' => 'gestor-bolsista',
-    'user' => 'gestor',
-    'password' => 'secret',
-    'host' => 'localhost',
-    'driver' => 'pdo_pgsql',
-]);
+function spot()
+{
+    static $spot;
+    
+    if($spot === null) {
+        $cfg = new \Spot\Config();
 
-$spot = new \Spot\Locator($cfg);
+        $cfg->addConnection('pgsql', [
+            'dbname' => 'gestor-bolsista',
+            'user' => 'gestor',
+            'password' => 'secret',
+            'host' => 'localhost',
+            'driver' => 'pdo_pgsql',
+        ]);
 
-$mapper = $spot->mapper('App\Models\User');
-$mapper->migrate();
+        // $mapper = $spot->mapper('App\Models\User');
+        // $mapper->migrate();
+
+        $spot = new \Spot\Locator($cfg);
+    }
+
+    return $spot;
+}
+
+function container()
+{
+    return DI\ContainerBuilder::buildDevContainer();
+}

@@ -2,21 +2,24 @@
 
 namespace App\Controllers;
 
+use App\Models\User;
+
 class UserController
 {
     private $user;
 
-    public function __construct($spot)
+    public function __construct()
     {
-        $this->user = $spot->mapper('App\Models\User');
+        //$this->user = $spot->mapper('App\Models\User');
+        $this->user = Config\config\container()->get('User');
     }
 
     public function createAdmin()
     {
         try {
             $entity = $this->user->create([
-                'email' => 'admin@admin.com',
-                'password' => 'admin'
+                'email'    => 'admin@admin.com',
+                'password' => password_hash('admin', PASSWORD_DEFAULT)
             ]);
 
             \Flight::json($entity);
@@ -31,10 +34,10 @@ class UserController
         $data    = json_decode($request->getBody());
 
         if (property_exists($data, 'email') && property_exists($data, 'password')) {
-            $userEmail = $data->email;
-            $userPass  = $data->password;
-
-            \Flight::json('Autenticado! :D');
+            $userEmail     = $data->email;
+            $userPassword  = $data->password;
+            
+            \Flight::json($this->user->loginByUserAndPassword($userEmail, $userPassword));;
         }
 
         \Flight::json(
