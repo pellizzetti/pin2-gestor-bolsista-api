@@ -3,9 +3,9 @@
 $cfg = new \Spot\Config();
 
 $cfg->addConnection('pgsql', [
-    'dbname' => 'gestor',
-    'user' => 'meucrediario',
-    'password' => 'elefante',
+    'dbname' => 'gestor-bolsista',
+    'user' => 'gestor',
+    'password' => 'secret',
     'host' => 'localhost',
     'driver' => 'pdo_pgsql',
 ]);
