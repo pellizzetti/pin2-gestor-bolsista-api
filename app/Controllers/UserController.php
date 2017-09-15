@@ -9,7 +9,7 @@ class UserController extends Controller
     public function __construct(Locator $spot)
     {
         parent::__construct($spot);
-        $this->entity = 'App\Models\User';
+        $this->entity = 'App\Entities\User';
     }
 
     public function createAdmin()
@@ -27,7 +27,7 @@ class UserController extends Controller
         }
     }
 
-    public function loginByUserAndPassword()
+    public function loginByEmailAndPassword()
     {
         $request = \Flight::request();
         $data    = json_decode($request->getBody());
