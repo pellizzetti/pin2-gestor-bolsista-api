@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Spot\MapperInterface as Mapper;
-
 class User extends \Spot\Entity
 {
     protected static $table = 'users';
@@ -16,10 +14,5 @@ class User extends \Spot\Entity
             'password'     => ['type' => 'string', 'required' => true],
             'date_created' => ['type' => 'datetime', 'value' => new \DateTime()]
         ];
-    }
-
-    public static function loginByUserAndPassword(Mapper $mapper, $userEmail, $userPassword)
-    {
-        return $mapper->all()->where(['email' => $userEmail])->first();
     }
 }
