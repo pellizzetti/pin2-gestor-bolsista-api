@@ -10,6 +10,7 @@ class User extends \Spot\Entity
     {
         return [
             'id'           => ['type' => 'integer', 'primary' => true, 'autoincrement' => true],
+            'name'         => ['type' => 'string', 'required' => true],
             'email'        => ['type' => 'string', 'required' => true],
             'password'     => ['type' => 'string', 'required' => true],
             'date_created' => ['type' => 'datetime', 'value' => new \DateTime()]
