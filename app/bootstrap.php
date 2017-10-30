@@ -1,6 +1,6 @@
 <?php
 
-// Modo debug
+// Debug
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -12,6 +12,7 @@ require(ROOT_DIR . '/vendor/autoload.php');
 require(ROOT_DIR . '/app/config/database.php');
 require(ROOT_DIR . '/app/routes.php');
 
+// Inicia api
 class Bootstrap
 {
     public static function run()

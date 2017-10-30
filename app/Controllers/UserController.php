@@ -18,13 +18,20 @@ class UserController extends Controller
         try {
             $mapper = $this->spot->mapper($this->entity);
             $user = $mapper->create([
+                'name'     => 'Admin',
                 'email'    => 'admin@admin.com',
                 'password' => password_hash('admin', PASSWORD_DEFAULT)
             ]);
 
             \Flight::json($user);
-        } catch (Exception $e) {
-            echo 'Erro: ',  $e->getMessage(), "\n";
+        } catch (\Spot\Exception $e) {
+            \Flight::json(
+                array(
+                    'error' => 'Erro ao criar usuário',
+                    'msg' => $e->getMessage()
+                ),
+                $code = 500
+            );
         }
     }
 
@@ -82,7 +89,7 @@ class UserController extends Controller
         }
 
         \Flight::json(
-            'Servidor não pode entender a requisição por se tratar de um sintaxe inválida para essa rota',
+            'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
             $code = 400
         );
     }
