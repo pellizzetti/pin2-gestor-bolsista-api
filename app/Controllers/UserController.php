@@ -28,7 +28,7 @@ class UserController extends Controller
             \Flight::json(
                 array(
                     'error' => 'Erro ao criar usuário',
-                    'msg' => $e->getMessage()
+                    'msg'   => $e->getMessage()
                 ),
                 $code = 500
             );
