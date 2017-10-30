@@ -50,15 +50,16 @@ class UserController extends Controller
             if ($user) {
                 $hashPassword = isset($user->password) ? $user->password : '';
                 if (password_verify($userPassword, $hashPassword)) {
-                    // '62E28F22E6E269'
+                    // TO-DO: Desenvolver um meio de gerar isso por comando e colocar em um arquivo de 
+                    // varíaveis de ambiente || '62E28F22E6E269'
                     $key = 'd9c993c4678855873a8f95645a9c9cbe41cee9f79ab5ff998ec669f1cd951733';
                     
                     $token = array(
                         'sub' => $user->name,
                         'context' => array(
                             'user' => array(
-                                'userId' => $user->id,
-                                'userName' => $user->email,
+                                'userId'    => $user->id,
+                                'userName'  => $user->email,
                                 'userLevel' => 'admin'
                             )
                         ),
@@ -72,8 +73,8 @@ class UserController extends Controller
                     \Flight::json(
                         array(
                             'auth' => true,
-                            'msg' => 'Autenticado com sucesso',
-                            'jwt' => $jwt
+                            'msg'  => 'Autenticado com sucesso',
+                            'jwt'  => $jwt
                         )
                     );
                 }
@@ -82,7 +83,7 @@ class UserController extends Controller
             \Flight::json(
                 array(
                     'auth' => false,
-                    'msg' => 'E-mail ou senha inválidos'
+                    'msg'  => 'E-mail ou senha inválidos'
                 ),
                 $code = 401
             );
