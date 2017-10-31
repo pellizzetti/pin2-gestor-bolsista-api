@@ -9,12 +9,21 @@ $CheckInOutController = new CheckInOutController($spot);
 
 // Mapeia resposta para rotas não encontradas
 Flight::map('notFound', function() {
-    Flight::json('Rota não encontrada', $code = 404);
+    Flight::json(
+        array(
+            'msg' => 'Rota não encontrada'
+        ), 
+        $code = 404
+    );
 });
 
 // Rota pra ping test
 Flight::route('/', function() {
-    Flight::json('api');
+    Flight::json(
+        array(
+            'msg' => 'api'
+        )
+    );
 });
 
 // Rotas de usuário
