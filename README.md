@@ -2,7 +2,7 @@
 
 API que contém o conjunto de instruções que controlam o funcionamento do aplicativo para gestão de bolsistas para a disciplina de Projeto Integrador II - UDESC/CEAVI.
 
-## Requirementos
+## Requerimentos
 
 Os seguintes itens devem estar instalados para executar o servidor:
 
