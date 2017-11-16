@@ -59,7 +59,8 @@ class UserController extends Controller
                         'context' => array(
                             'user' => array(
                                 'userId'    => $user->id,
-                                'userName'  => $user->email,
+				                'userName'  => $user->name,
+                                'userEmail' => $user->email,
                                 'userLevel' => 'admin'
                             )
                         ),
