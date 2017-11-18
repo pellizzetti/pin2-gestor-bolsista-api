@@ -31,4 +31,4 @@ Flight::route('GET /user/create/admin', array($UserController, 'createAdmin'));
 Flight::route('POST /user/login', array($UserController, 'loginByEmailAndPassword'));
 
 // Rotas de check-in/out
-Flight::route('POST /checkinout', array($CheckInOutController, 'checkInOut'));
+Flight::route('POST /checkinout/@id:[0-9]{1,5}', array($CheckInOutController, 'checkInOut'));
