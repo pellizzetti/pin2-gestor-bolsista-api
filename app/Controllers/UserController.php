@@ -91,7 +91,10 @@ class UserController extends Controller
         }
 
         \Flight::json(
-            'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+            array(
+                'auth' => false,
+                'msg'  => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota'
+            ),
             $code = 400
         );
     }
