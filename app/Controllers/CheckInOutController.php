@@ -13,16 +13,18 @@ class CheckInOutController extends Controller
         $this->entity = 'App\Entities\CheckInOut';
     }
 
-    public function checkInOut()
+    public function checkInOut($userId)
     {
-        $request = \Flight::request();
-        $data    = json_decode($request->getBody());
+        if ($userId) {
+            $mapper = $this->spot->mapper($this->entity);
+            $user   = $mapper->where(['user_id' => $userId])->order(['created_at' => 'DESC'])->first();
+            
+            if ($user) {
+                $inOut = $user->in_out === 'in' ? 'out' : 'in';
+            } else {
+                $inOut = 'in';
+            }
 
-        if (property_exists($data, 'inOut') && property_exists($data, 'userId')) {
-            $inOut  = $data->inOut;
-            $userId = $data->userId;
-
-            $mapper     = $this->spot->mapper($this->entity);
             $checkInOut = $mapper->create([
                 'in_out'  => $inOut,
                 'user_id' => $userId
