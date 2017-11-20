@@ -44,4 +44,35 @@ class CheckInOutController extends Controller
             $code = 400
         );
     }
+
+    public function listCheckInOut($userId)
+    {
+        if ($userId) {
+            $mapper         = $this->spot->mapper($this->entity);
+            $checkInOutList = $mapper->where(['user_id' => $userId])->order(['created_at' => 'DESC']);
+                
+            if ($checkInOutList) {
+                \Flight::json(
+                    array(
+                        'success'        => true,
+                        'msg'            => 'Lista de check-in/out retornada com sucesso',
+                        'checkInOutList' => $checkInOutList
+                    )
+                );
+            } else {
+                \Flight::json(
+                    array(
+                        'success' => false,
+                        'msg'     => "Usuário não encontrado",
+                    ),
+                    $code = 401
+                );
+            }
+        }
+
+        \Flight::json(
+            'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+            $code = 400
+        );
+    }
 }
