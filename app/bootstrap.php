@@ -7,6 +7,9 @@ error_reporting(E_ALL);
 // Define raiz da aplicação
 define('ROOT_DIR', dirname(dirname(__FILE__)));
 
+// Define horário do servidor como brasileiro
+date_default_timezone_set('America/Belem');
+
 // Inclui autoload, config do bd e rotas
 require(ROOT_DIR . '/vendor/autoload.php');
 require(ROOT_DIR . '/app/config/database.php');
