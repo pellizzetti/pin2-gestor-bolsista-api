@@ -10,6 +10,9 @@ define('ROOT_DIR', dirname(dirname(__FILE__)));
 // Define horário do servidor como brasileiro
 date_default_timezone_set('America/Sao_Paulo');
 
+// Define o local
+setlocale(LC_TIME, 'pt_BR');
+
 // Inclui autoload, config do bd e rotas
 require(ROOT_DIR . '/vendor/autoload.php');
 require(ROOT_DIR . '/app/config/database.php');
