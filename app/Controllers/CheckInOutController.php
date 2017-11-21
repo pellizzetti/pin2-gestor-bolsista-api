@@ -49,7 +49,7 @@ class CheckInOutController extends Controller
     {
         if ($userId) {
             $mapper         = $this->spot->mapper($this->entity);
-            $checkInOutList = $mapper->where(['user_id' => $userId])->order(['created_at' => 'DESC']);
+            $checkInOutList = $mapper->where(['user_id' => $userId])->order(['created_at' => 'asc']);
                 
             if ($checkInOutList) {
                 return \Flight::json(
