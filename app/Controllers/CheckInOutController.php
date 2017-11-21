@@ -51,7 +51,7 @@ class CheckInOutController extends Controller
             $mapper         = $this->spot->mapper($this->entity);
             $checkInOutList = $mapper->where([
                 'user_id'    => $userId,
-                'created_at' => new \DateTime('yesterday')
+                'created_at' => new \DateTime('YYYY-MM-DD')
             ])->order(['created_at' => 'asc']);
                 
             if ($checkInOutList) {
@@ -66,7 +66,7 @@ class CheckInOutController extends Controller
             return \Flight::json(
                 array(
                     'success' => false,
-                    'msg'     => "Usuário não encontrado",
+                    'msg'     => "Nenhum check-in/out encontrado",
                 ),
                 $code = 401
             );
