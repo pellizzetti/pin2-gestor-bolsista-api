@@ -72,13 +72,13 @@ class UserController extends Controller
                     
                     $jwt = JWT::encode($token, $key, 'HS256');
             
-                    \Flight::json(
+                    \Flight::halt(
+                        200,
                         array(
                             'auth' => true,
                             'msg'  => 'Autenticado com sucesso',
                             'jwt'  => $jwt
-                        ),
-                        $code = 200
+                        )
                     );
                 }
             }
