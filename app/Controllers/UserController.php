@@ -77,7 +77,8 @@ class UserController extends Controller
                             'auth' => true,
                             'msg'  => 'Autenticado com sucesso',
                             'jwt'  => $jwt
-                        )
+                        ),
+                        $code = 200
                     );
                 }
             }
