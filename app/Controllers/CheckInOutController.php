@@ -48,11 +48,13 @@ class CheckInOutController extends Controller
     public function listCheckInOut($userId)
     {
         if ($userId) {
-            $hoje           = new \DateTime();
+            $hoje           = new \DateTime('today');
+            $amanha         = new \DateTime('tomorrow');
             $mapper         = $this->spot->mapper($this->entity);
             $checkInOutList = $mapper->where([
-                'user_id'    => $userId,
-                'created_at::date' => $hoje->format('Y-m-d')
+                'user_id'       => $userId,
+                'created_at >=' => $hoje,
+                'created_at <'  => $amanha,
             ])->order(['created_at' => 'asc']);
                 
             if ($checkInOutList) {
