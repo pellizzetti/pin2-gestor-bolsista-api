@@ -12,6 +12,7 @@ class User extends \Spot\Entity
             'id'         => ['type' => 'integer', 'primary' => true, 'autoincrement' => true],
             'name'       => ['type' => 'string', 'required' => true],
             'email'      => ['type' => 'string', 'required' => true],
+            'level'      => ['type' => 'string', 'required' => true],
             'password'   => ['type' => 'string', 'required' => true],
             'created_at' => ['type' => 'datetime', 'value' => new \DateTime()],
             'updated_at' => ['type' => 'datetime', 'value' => new \DateTime()]
