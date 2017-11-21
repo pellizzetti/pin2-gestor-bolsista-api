@@ -21,17 +21,17 @@ try {
     $mapper = $spot->mapper('App\Entities\CheckInOut');
     $mapper->migrate();
 } catch (Exception $e) {   
-    \Flight::json(
+    throw \Flight::json(
         array(
-            'error' => 'Erro ao criar usuário',
+            'error' => 'Erro ao conectar ao banco de dados',
             'msg'   => $e->getMessage()
         ),
         $code = 500
     );
 } catch (\Spot\Exception $e) {
-    \Flight::json(
+    throw \Flight::json(
         array(
-            'error' => 'Erro ao criar usuário',
+            'error' => 'Erro ao conectar ao banco de dados',
             'msg'   => $e->getMessage()
         ),
         $code = 500
