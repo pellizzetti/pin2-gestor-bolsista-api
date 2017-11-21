@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 define('ROOT_DIR', dirname(dirname(__FILE__)));
 
 // Define horário do servidor como brasileiro
-date_default_timezone_set('America/Belem');
+date_default_timezone_set('America/Sao_Paulo');
 
 // Inclui autoload, config do bd e rotas
 require(ROOT_DIR . '/vendor/autoload.php');
