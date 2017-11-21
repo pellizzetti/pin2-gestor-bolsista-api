@@ -51,7 +51,7 @@ class CheckInOutController extends Controller
             $mapper         = $this->spot->mapper($this->entity);
             $checkInOutList = $mapper->where([
                 'user_id'    => $userId,
-                'created_at' => new \DateTime('YYYY-MM-DD')
+                'created_at' => new DateTime('YYYY-MM-DD')
             ])->order(['created_at' => 'asc']);
                 
             if ($checkInOutList) {
