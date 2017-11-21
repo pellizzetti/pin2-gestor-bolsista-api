@@ -1,13 +1,15 @@
 <?php
 
 try {
-    $cfg = new \Spot\Config();
+    $cfg   = new \Spot\Config();
+    $dbCfg = parse_url(getenv('DATABASE_URL'));
     
     $cfg->addConnection('pgsql', [
-        'dbname'   => 'gestor-bolsista',
-        'user'     => 'gestor',
-        'password' => 'secret',
-        'host'     => 'localhost',
+        'dbname'   => ltrim($dbCfg['path'],'/'),
+        'user'     => $dbCfg['user'],
+        'password' => $dbCfg['pass'],
+        'host'     => $dbCfg['host'],
+        'port'     => $dbCfg['port'],
         'driver'   => 'pdo_pgsql',
     ]);
 
