@@ -72,18 +72,17 @@ class UserController extends Controller
                     
                     $jwt = JWT::encode($token, $key, 'HS256');
             
-                    \Flight::json(
+                    return \Flight::json(
                         array(
                             'auth' => true,
                             'msg'  => 'Autenticado com sucesso',
                             'jwt'  => $jwt
                         )
                     );
-                    \Flight::halt();
                 }
             }
 
-            \Flight::json(
+            return \Flight::json(
                 array(
                     'auth' => false,
                     'msg'  => 'E-mail ou senha inválidos'
@@ -92,7 +91,7 @@ class UserController extends Controller
             );
         }
 
-        \Flight::json(
+        return \Flight::json(
             array(
                 'auth' => false,
                 'msg'  => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota'
