@@ -30,7 +30,7 @@ class CheckInOutController extends Controller
                 'user_id' => $userId
             ]);
                 
-            \Flight::json(
+            return \Flight::json(
                 array(
                     'checked'    => true,
                     'msg'        => "Check-{$inOut} realizado com sucesso",
@@ -39,7 +39,7 @@ class CheckInOutController extends Controller
             );
         }
 
-        \Flight::json(
+        return \Flight::json(
             'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
             $code = 400
         );
@@ -52,25 +52,24 @@ class CheckInOutController extends Controller
             $checkInOutList = $mapper->where(['user_id' => $userId])->order(['created_at' => 'DESC']);
                 
             if ($checkInOutList) {
-                \Flight::json(
+                return \Flight::json(
                     array(
                         'success'        => true,
                         'msg'            => 'Lista de check-in/out retornada com sucesso',
                         'checkInOutList' => $checkInOutList
                     )
                 );
-            } else {
-                \Flight::json(
-                    array(
-                        'success' => false,
-                        'msg'     => "Usuário não encontrado",
-                    ),
-                    $code = 401
-                );
-            }
+            } 
+            return \Flight::json(
+                array(
+                    'success' => false,
+                    'msg'     => "Usuário não encontrado",
+                ),
+                $code = 401
+            );
         }
 
-        \Flight::json(
+        return \Flight::json(
             'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
             $code = 400
         );

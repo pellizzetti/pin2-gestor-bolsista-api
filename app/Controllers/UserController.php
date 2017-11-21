@@ -24,9 +24,9 @@ class UserController extends Controller
                 'level'    => 'gestor'
             ]);
 
-            \Flight::json($user);
+            return \Flight::json($user);
         } catch (\Spot\Exception $e) {
-            \Flight::json(
+            return \Flight::json(
                 array(
                     'error' => 'Erro ao criar usuário',
                     'msg'   => $e->getMessage()
