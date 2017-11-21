@@ -20,7 +20,8 @@ class UserController extends Controller
             $user = $mapper->create([
                 'name'     => 'Admin',
                 'email'    => 'admin@admin.com',
-                'password' => password_hash('admin', PASSWORD_DEFAULT)
+                'password' => password_hash('admin', PASSWORD_DEFAULT),
+                'level'    => 'gestor'
             ]);
 
             \Flight::json($user);
