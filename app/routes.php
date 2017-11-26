@@ -28,9 +28,10 @@ Flight::route('/', function() {
 
 // Rotas de usuário
 Flight::route('GET /users', array($UserController, 'getUsers'));
-Flight::route('GET /user/create/admin', array($UserController, 'createAdmin'));
+Flight::route('GET /user/admin', array($UserController, 'createAdmin'));
+Flight::route('POST /user', array($UserController, 'createUser'));
 Flight::route('POST /user/login', array($UserController, 'loginByEmailAndPassword'));
 
 // Rotas de check-in/out
 Flight::route('POST /checkinout/@id:[0-9]{1,5}', array($CheckInOutController, 'checkInOut'));
-Flight::route('GET /checkinout/list/@id:[0-9]{1,5}', array($CheckInOutController, 'listCheckInOut'));
+Flight::route('GET /checkinout/list/@id:[0-9]{1,5}', array($CheckInOutController, 'getlistCheckInOut'));
