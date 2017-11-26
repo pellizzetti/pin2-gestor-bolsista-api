@@ -122,4 +122,47 @@ class UserController extends Controller
             $code = 401
         );
     }
+
+    public function createUser()
+    {
+        $request = \Flight::request();
+        $data    = json_decode($request->getBody());
+
+        if (
+            property_exists($data, 'name') &&
+            property_exists($data, 'email') &&
+            property_exists($data, 'password') &&
+            property_exists($data, 'level')
+        ) {
+            try {
+                $mapper = $this->spot->mapper($this->entity);
+                $user = $mapper->create($data);
+
+                return \Flight::json(
+                    array(
+                        'success' => true,
+                        'message' => 'Usuário criado com sucesso',
+                        'user'    => $user
+                    )
+                );
+            } catch (\Spot\Exception $e) {
+                return \Flight::json(
+                    array(
+                        'success' => false,
+                        'error'   => 'Erro ao criar usuário',
+                        'message' => $e->getMessage()
+                    ),
+                    $code = 500
+                );
+            }
+        }
+
+        return \Flight::json(
+            array(
+                'success' => false,
+                'message' => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota'
+            ),
+            $code = 400
+        );
+    }
 }
