@@ -23,16 +23,16 @@ try {
 } catch (Exception $e) {   
     throw \Flight::json(
         array(
-            'error' => 'Erro ao conectar ao banco de dados',
-            'msg'   => $e->getMessage()
+            'error'   => 'Erro ao conectar ao banco de dados',
+            'message' => $e->getMessage()
         ),
         $code = 500
     );
 } catch (\Spot\Exception $e) {
     throw \Flight::json(
         array(
-            'error' => 'Erro ao conectar ao banco de dados',
-            'msg'   => $e->getMessage()
+            'error'            => 'Erro ao conectar ao banco de dados',
+            'UserListResponse' => $e->getMessage()
         ),
         $code = 500
     );
