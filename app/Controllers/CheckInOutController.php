@@ -33,7 +33,7 @@ class CheckInOutController extends Controller
             return \Flight::json(
                 array(
                     'checked'    => true,
-                    'msg'        => "Check-{$inOut} realizado com sucesso",
+                    'message'    => "Check-{$inOut} realizado com sucesso",
                     'checkInOut' => $checkInOut
                 )
             );
@@ -61,7 +61,7 @@ class CheckInOutController extends Controller
                 return \Flight::json(
                     array(
                         'success'        => true,
-                        'msg'            => 'Lista de check-in/out retornada com sucesso',
+                        'message'        => 'Lista de check-in/out retornada com sucesso',
                         'checkInOutList' => $checkInOutList
                     )
                 );
@@ -69,7 +69,7 @@ class CheckInOutController extends Controller
             return \Flight::json(
                 array(
                     'success' => false,
-                    'msg'     => "Nenhum check-in/out encontrado",
+                    'message' => "Nenhum check-in/out encontrado",
                 ),
                 $code = 401
             );
