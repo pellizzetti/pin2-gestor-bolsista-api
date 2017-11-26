@@ -28,8 +28,8 @@ class UserController extends Controller
         } catch (\Spot\Exception $e) {
             return \Flight::json(
                 array(
-                    'error' => 'Erro ao criar usuário',
-                    'msg'   => $e->getMessage()
+                    'error'   => 'Erro ao criar usuário',
+                    'message' => $e->getMessage()
                 ),
                 $code = 500
             );
@@ -74,9 +74,9 @@ class UserController extends Controller
             
                     return \Flight::json(
                         array(
-                            'auth' => true,
-                            'msg'  => 'Autenticado com sucesso',
-                            'jwt'  => $jwt
+                            'auth'    => true,
+                            'message' => 'Autenticado com sucesso',
+                            'jwt'     => $jwt
                         )
                     );
                 }
@@ -84,8 +84,8 @@ class UserController extends Controller
 
             return \Flight::json(
                 array(
-                    'auth' => false,
-                    'msg'  => 'E-mail ou senha inválidos'
+                    'auth'    => false,
+                    'message' => 'E-mail ou senha inválidos'
                 ),
                 $code = 401
             );
@@ -93,8 +93,8 @@ class UserController extends Controller
 
         return \Flight::json(
             array(
-                'auth' => false,
-                'msg'  => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota'
+                'auth'    => false,
+                'message' => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota'
             ),
             $code = 400
         );
