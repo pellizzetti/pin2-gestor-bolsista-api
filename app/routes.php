@@ -11,7 +11,7 @@ $CheckInOutController = new CheckInOutController($spot);
 Flight::map('notFound', function() {
     Flight::json(
         array(
-            'msg' => 'Rota não encontrada'
+            'message' => 'Rota não encontrada'
         ), 
         $code = 404
     );
@@ -21,7 +21,7 @@ Flight::map('notFound', function() {
 Flight::route('/', function() {
     Flight::json(
         array(
-            'msg' => 'api'
+            'message' => 'api'
         )
     );
 });
