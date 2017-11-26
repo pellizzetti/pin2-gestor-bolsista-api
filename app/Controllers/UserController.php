@@ -99,4 +99,27 @@ class UserController extends Controller
             $code = 400
         );
     }
+
+    public function getUsers()
+    {
+        $mapper = $this->spot->mapper($this->entity);
+        $users = $mapper->all();
+
+        if ($users) {       
+            return \Flight::json(
+                array(
+                    'success' => true,
+                    'users'   => $users
+                )
+            );
+        }
+
+        return \Flight::json(
+            array(
+                'success' => false,
+                'users'   => []
+            ),
+            $code = 401
+        );
+    }
 }
