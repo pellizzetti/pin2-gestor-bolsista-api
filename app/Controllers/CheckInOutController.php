@@ -45,7 +45,7 @@ class CheckInOutController extends Controller
         );
     }
 
-    public function listCheckInOut($userId)
+    public function getlistCheckInOut($userId)
     {
         if ($userId) {
             $hoje           = new \DateTime('today');
