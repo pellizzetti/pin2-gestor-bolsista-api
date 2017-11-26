@@ -27,6 +27,7 @@ Flight::route('/', function() {
 });
 
 // Rotas de usuário
+Flight::route('GET /users', array($UserController, 'getUsers'));
 Flight::route('GET /user/create/admin', array($UserController, 'createAdmin'));
 Flight::route('POST /user/login', array($UserController, 'loginByEmailAndPassword'));
 
