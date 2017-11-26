@@ -134,9 +134,19 @@ class UserController extends Controller
             property_exists($data, 'password') &&
             property_exists($data, 'level')
         ) {
+            $userName     = $data->name;
+            $userEmail    = $data->email;
+            $userPassword = $data->password;
+            $userLevel    = $data->level;
+
             try {
                 $mapper = $this->spot->mapper($this->entity);
-                $user = $mapper->create($data);
+                $user = $mapper->create([
+                    'name'     => $userName,
+                    'email'    => $userEmail,
+                    'password' => password_hash($userPassword, PASSWORD_DEFAULT),
+                    'level'    => $userLevel
+                ]);
 
                 return \Flight::json(
                     array(
