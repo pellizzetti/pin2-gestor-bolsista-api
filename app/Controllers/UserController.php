@@ -108,8 +108,8 @@ class UserController extends Controller
         if ($users) {       
             return \Flight::json(
                 array(
-                    'success' => true,
-                    'users'   => $users
+                    'success'   => true,
+                    'usersList' => $users
                 )
             );
         }
