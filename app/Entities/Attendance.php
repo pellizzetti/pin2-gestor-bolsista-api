@@ -5,7 +5,7 @@ namespace App\Entities;
 use Spot\EntityInterface as Entity;
 use Spot\MapperInterface as Mapper;
 
-class CheckInOut extends \Spot\Entity
+class Attendance extends \Spot\Entity
 {
     protected static $table = 'attendances';
 
