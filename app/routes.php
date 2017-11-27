@@ -34,4 +34,4 @@ Flight::route('POST /user/login', array($UserController, 'loginByEmailAndPasswor
 
 // Rotas de check-in/out
 Flight::route('POST /checkinout/@id:[0-9]{1,5}', array($CheckInOutController, 'checkInOut'));
-Flight::route('GET /checkinout/list/@id:[0-9]{1,5}', array($CheckInOutController, 'getlistCheckInOut'));
+Flight::route('GET /checkinout/list/@id:[0-9]{1,5}', array($CheckInOutController, 'getListCheckInOut'));
