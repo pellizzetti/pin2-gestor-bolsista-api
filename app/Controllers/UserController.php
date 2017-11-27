@@ -138,6 +138,7 @@ class UserController extends Controller
             $userEmail    = $data->email;
             $userPassword = $data->password;
             $userLevel    = $data->level;
+            $userArea     = $data->area;
 
             try {
                 $mapper = $this->spot->mapper($this->entity);
@@ -145,7 +146,8 @@ class UserController extends Controller
                     'name'     => $userName,
                     'email'    => $userEmail,
                     'password' => password_hash($userPassword, PASSWORD_DEFAULT),
-                    'level'    => $userLevel
+                    'level'    => $userLevel,
+                    'area'     => $userArea
                 ]);
 
                 return \Flight::json(
