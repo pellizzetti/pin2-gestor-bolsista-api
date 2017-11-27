@@ -40,7 +40,10 @@ class CheckInOutController extends Controller
         }
 
         return \Flight::json(
-            'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+            array(
+                'checked' => false,
+                'message' => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+            ),
             $code = 400
         );
     }
@@ -76,7 +79,10 @@ class CheckInOutController extends Controller
         }
 
         return \Flight::json(
-            'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+            array(
+                'success' => false,
+                'message' => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+            ),
             $code = 400
         );
     }
