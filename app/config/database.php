@@ -23,6 +23,9 @@ try {
 
     $mapper = $spot->mapper('App\Entities\Attendance');
     $mapper->migrate();
+
+    $mapper = $spot->mapper('App\Entities\ResearchReport');
+    $mapper->migrate();
 } catch (Exception $e) {   
     throw \Flight::json(
         array(
