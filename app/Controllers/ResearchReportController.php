@@ -70,7 +70,7 @@ class ResearchReportController extends Controller
             'created_at <=' => $weekEnd->format('Y-m-d H:i:s'),
         ])->order(['created_at' => 'asc']);
             
-        if ($attendanceList) {
+        if ($researchReportList) {
             return \Flight::json(
                 array(
                     'success'            => true,
