@@ -6,6 +6,7 @@ use App\Controllers\CheckInOutController;
 // Inicia controladores
 $UserController       = new UserController($spot);
 $CheckInOutController = new CheckInOutController($spot);
+$AttendanceController = new AttendanceController($spot);
 
 // Mapeia resposta para rotas não encontradas
 Flight::map('notFound', function() {
