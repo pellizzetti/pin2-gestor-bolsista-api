@@ -33,7 +33,7 @@ class ResearchReportController extends Controller
                     array(
                         'success'        => true,
                         'message'        => 'Relatório de pesquisa criado com sucesso',
-                        'researchReport' => $attendance
+                        'researchReport' => $researchReport
                     )
                 );
             } catch (\Spot\Exception $e) {
