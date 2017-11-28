@@ -20,6 +20,9 @@ try {
 
     $mapper = $spot->mapper('App\Entities\CheckInOut');
     $mapper->migrate();
+
+    $mapper = $spot->mapper('App\Entities\Attendance');
+    $mapper->migrate();
 } catch (Exception $e) {   
     throw \Flight::json(
         array(
