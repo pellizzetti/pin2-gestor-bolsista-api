@@ -63,42 +63,39 @@ class AttendanceController extends Controller
         );
     }
 
-    public function getListAttendance($userId)
+    public function getListAttendance()
     {
-        if ($userId) {
-            $hoje           = new \DateTime('today');
-            $amanha         = new \DateTime('tomorrow');
-            $mapper         = $this->spot->mapper($this->entity);
-            $attendanceList = $mapper->where([
-                'user_id'       => $userId,
-                'created_at >=' => $hoje->format('Y-m-d H:i:s'),
-                'created_at <'  => $amanha->format('Y-m-d H:i:s'),
-            ])->order(['created_at' => 'asc']);
-                
-            if ($attendanceList) {
-                return \Flight::json(
-                    array(
-                        'success'        => true,
-                        'message'        => 'Lista de atendimentos retornada com sucesso',
-                        'attendanceList' => $attendanceList
-                    )
-                );
-            } 
+        $hoje           = new \DateTime('today');
+        $amanha         = new \DateTime('tomorrow');
+        $mapper         = $this->spot->mapper($this->entity);
+        $attendanceList = $mapper->where([
+            'created_at >=' => $hoje->format('Y-m-d H:i:s'),
+            'created_at <'  => $amanha->format('Y-m-d H:i:s'),
+        ])->order(['created_at' => 'asc']);
+            
+        if ($attendanceList) {
             return \Flight::json(
                 array(
-                    'success' => false,
-                    'message' => "Nenhum atendimento encontrado",
-                ),
-                $code = 401
+                    'success'        => true,
+                    'message'        => 'Lista de atendimentos retornada com sucesso',
+                    'attendanceList' => $attendanceList
+                )
             );
-        }
-
+        } 
         return \Flight::json(
             array(
                 'success' => false,
-                'message' => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+                'message' => "Nenhum atendimento encontrado",
             ),
-            $code = 400
+            $code = 401
         );
+
+    return \Flight::json(
+        array(
+            'success' => false,
+            'message' => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
+        ),
+        $code = 400
+    );
     }
 }
