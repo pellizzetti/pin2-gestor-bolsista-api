@@ -32,7 +32,7 @@ class AttendanceController extends Controller
                 $attendance = $mapper->create([
                     'student'     => $attendanceStudent,
                     'description' => $attendanceDescription,
-                    'userId'      => $userId
+                    'user_id'     => $userId
                 ]);
 
                 return \Flight::json(
