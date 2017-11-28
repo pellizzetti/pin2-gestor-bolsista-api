@@ -3,11 +3,13 @@
 use App\Controllers\UserController;
 use App\Controllers\CheckInOutController;
 use App\Controllers\AttendanceController;
+use App\Controllers\ResearchReportController;
 
 // Inicia controladores
-$UserController       = new UserController($spot);
-$CheckInOutController = new CheckInOutController($spot);
-$AttendanceController = new AttendanceController($spot);
+$UserController           = new UserController($spot);
+$CheckInOutController     = new CheckInOutController($spot);
+$AttendanceController     = new AttendanceController($spot);
+$ResearchReportController = new ResearchReportController($spot);
 
 // Mapeia resposta para rotas não encontradas
 Flight::map('notFound', function() {
