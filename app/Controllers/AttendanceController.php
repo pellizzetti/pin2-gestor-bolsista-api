@@ -85,8 +85,8 @@ class AttendanceController extends Controller
 
         return \Flight::json(
             array(
-                'success' => false,
-                'message' => "Nenhum atendimento encontrado",
+                'success'        => false,
+                'message'        => "Nenhum atendimento encontrado",
                 'attendanceList' => []
             ),
             $code = 401
