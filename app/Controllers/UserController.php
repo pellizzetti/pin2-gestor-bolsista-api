@@ -62,7 +62,8 @@ class UserController extends Controller
                                 'userId'    => $user->id,
 				                'userName'  => $user->name,
                                 'userEmail' => $user->email,
-                                'userLevel' => $user->level
+                                'userLevel' => $user->level,
+                                'userArea'  => $user->area,
                             )
                         ),
                         'iss' => 'ceavi-udesc',
