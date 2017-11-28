@@ -25,7 +25,7 @@ class ResearchReportController extends Controller
             try {
                 $mapper         = $this->spot->mapper($this->entity);
                 $researchReport = $mapper->create([
-                    'description' => $attendanceDescription,
+                    'description' => $researchReportDescription,
                     'user_id'     => $userId
                 ]);
 
