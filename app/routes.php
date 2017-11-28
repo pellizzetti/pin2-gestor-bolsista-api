@@ -43,3 +43,7 @@ Flight::route('GET /checkinout/list/@id:[0-9]{1,5}', array($CheckInOutController
 // Rotas de atendimento
 Flight::route('GET /attendances', array($AttendanceController, 'getListAttendance'));
 Flight::route('POST /attendance', array($AttendanceController, 'createAttendance'));
+
+// Rotas de relatório de pesquisa
+Flight::route('GET /researchreports', array($ResearchReportController, 'getListResearchReport'));
+Flight::route('POST /researchreport', array($ResearchReportController, 'createResearchReport'));
