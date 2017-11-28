@@ -82,20 +82,14 @@ class AttendanceController extends Controller
                 )
             );
         } 
+
         return \Flight::json(
             array(
                 'success' => false,
                 'message' => "Nenhum atendimento encontrado",
+                'attendanceList' => []
             ),
             $code = 401
         );
-
-    return \Flight::json(
-        array(
-            'success' => false,
-            'message' => 'Servidor não pode entender a requisição por se tratar de uma sintaxe inválida para essa rota',
-        ),
-        $code = 400
-    );
     }
 }
