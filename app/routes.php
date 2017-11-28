@@ -2,6 +2,7 @@
 
 use App\Controllers\UserController;
 use App\Controllers\CheckInOutController;
+use App\Controllers\AttendanceController;
 
 // Inicia controladores
 $UserController       = new UserController($spot);
