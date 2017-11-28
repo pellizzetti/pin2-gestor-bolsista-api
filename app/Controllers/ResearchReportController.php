@@ -59,8 +59,11 @@ class ResearchReportController extends Controller
 
     public function getListResearchReport()
     {
-        $weekStart          = new DateTime('Last monday');
-        $weekEnd            = new DateTime('Sunday');
+        $dayWeek            = Date('N');
+        $daysToEnd          = 7 - $dayWeek;
+        $daysFromStart      = $dayWeek - 1;
+        $weekStart          = new DateTime("- {$daysFromStart} days");
+        $weekEnd            = new DateTime("+ {$daysToEnd} days");
         $mapper             = $this->spot->mapper($this->entity);
         $researchReportList = $mapper->where([
             'created_at >=' => $weekStart->format('Y-m-d H:i:s'),
