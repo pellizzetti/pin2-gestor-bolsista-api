@@ -5,6 +5,8 @@ use App\Controllers\CheckInOutController;
 use App\Controllers\AttendanceController;
 use App\Controllers\ResearchReportController;
 
+header('Access-Control-Allow-Origin: http://localhost:8100', false);
+
 // Inicia controladores
 $UserController           = new UserController($spot);
 $CheckInOutController     = new CheckInOutController($spot);
